@@ -48,7 +48,7 @@ void print_board(int board[12][12],int &counter, int n){
 }
 
 //Determine the moves for the knight
-void move(int posx, int posy, int &counter, bool &done, int n)
+void move(int posx, int posy, int &counter, bool &done, int n, int &knight)
 {
   usleep(5000);
 
@@ -82,14 +82,14 @@ void move(int posx, int posy, int &counter, bool &done, int n)
     if (done) {return;}
 
     //Prepare next jump
-    move(posx-1, posy-2, counter, done, n);
-    move(posx+1, posy-2, counter, done, n);
-    move(posx+2, posy-1, counter, done, n);
-    move(posx+2, posy+1, counter, done, n);
-    move(posx+1, posy+2, counter, done, n);
-    move(posx-1, posy+2, counter, done, n);
-    move(posx-2, posy-1, counter, done, n);
-    move(posx-2, posy+1, counter, done, n);
+    move(posx-1, posy-2, counter, done, n, knight);
+    move(posx+1, posy-2, counter, done, n, knight);
+    move(posx+2, posy-1, counter, done, n, knight);
+    move(posx+2, posy+1, counter, done, n, knight);
+    move(posx+1, posy+2, counter, done, n, knight);
+    move(posx-1, posy+2, counter, done, n, knight);
+    move(posx-2, posy-1, counter, done, n, knight);
+    move(posx-2, posy+1, counter, done, n, knight);
     if (done){return;}
     counter--;
     knight--;
@@ -146,14 +146,15 @@ void quick_move(int posx, int posy, int &counter, bool &done, int n)
     return;
 }
 
+//Cycle through each starting point and show the step-by-step solution for each.
 void tv_mode()
 {
-  //Place the knight at the first square
   while(true){
     for (int i = 0; i < 5; i++)
     {
       for (int j = 0; j < 5; j++)
       {
+        int knight = 0;
         int counter = 0;
         int size=5;
         bool done = false;
@@ -161,9 +162,9 @@ void tv_mode()
         load_board(board, size);
         print_board(board, counter, size);
         std::cout << "Current starting square: " << j << "," << i << std::endl;
-        int startx = j;
-        int starty = i;
-        move(startx+2,starty+2,counter, done, size);
+        int startx = i;
+        int starty = j;
+        move(startx+2,starty+2,counter, done, size, knight);
         if (done)
         {
           print_board(board, counter, size);
