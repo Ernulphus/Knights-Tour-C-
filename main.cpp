@@ -148,21 +148,21 @@ void quick_move(int posx, int posy, int &counter, bool &done, int n)
 
 void tv_mode()
 {
-  int counter = 0;
-  int size=5;
-  bool done = false;
-
-  load_board(board, size);
-  print_board(board, counter, size);
-
   //Place the knight at the first square
   while(true){
     for (int i = 0; i < 5; i++)
     {
       for (int j = 0; j < 5; j++)
       {
-        int startx = 0;
-        int starty = 0;
+        int counter = 0;
+        int size=5;
+        bool done = false;
+
+        load_board(board, size);
+        print_board(board, counter, size);
+        std::cout << "Current starting square: " << j << "," << i << std::endl;
+        int startx = j;
+        int starty = i;
         move(startx+2,starty+2,counter, done, size);
         if (done)
         {
