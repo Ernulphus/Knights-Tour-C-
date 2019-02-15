@@ -6,3 +6,5 @@ The board will will then print the result, if it's achievable.
 Warning: not all starting positions work on all boards, and if the board gets too big it will take a while to solve (increasing the board size adds a lot of recursive steps)
 
 Try tracing the solutions on paper for some interesting designs!
+
+NEW: Enter a board size of 0 or less for a neat little mode to show how the program solves the problem, one step at a time!
