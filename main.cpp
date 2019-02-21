@@ -152,7 +152,7 @@ void tv_mode()
   while(true){
     for (int i = 0; i < 5; i++)
     {
-      for (int j = 0; j < 5; j++)
+      for (int j = (i%2); j < 5; j+=2)
       {
         int knight = 0;
         int counter = 0;
